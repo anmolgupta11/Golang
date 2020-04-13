@@ -1,5 +1,10 @@
 package models
 
+import (
+	"errors"
+	"fmt"
+)
+
 type User struct {
 	ID         int
 	FirstName  string
