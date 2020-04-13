@@ -30,7 +30,7 @@ func AddUser(u User) (User, error) {
 	return u, nil
 }
 
-func GetUserByID(id, int) (User, error) {
+func GetUserByID(id int) (User, error) {
 	for _, u := range users {
 		if u.ID == id {
 			return *u, nil
