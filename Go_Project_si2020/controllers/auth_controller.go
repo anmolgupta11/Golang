@@ -3,6 +3,8 @@
 package controllers
 
 import (
+	"Go_Project_si2020/services"
+	"Go_Project_si2020/services/models"
 	"encoding/json"
 	"net/http"
 )
