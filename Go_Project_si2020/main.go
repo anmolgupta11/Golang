@@ -13,7 +13,7 @@ import (
 func main() {
 
 	settings.Init()
-	router := routers.RouterMux()
+	router := routers.InitRoutes()
 
 	config.ConnectDatabase()
 	config.ConnectCache()

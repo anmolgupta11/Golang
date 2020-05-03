@@ -10,8 +10,7 @@ import (
 func SetAuthenticationRoutes(router *mux.Router) *mux.Router {
 	router.HandleFunc(
 		"/token-auth",
-		controllers.Login
-	).Methods("POST")
+		controllers.Login).Methods("POST")
 
 	router.Handle(
 		"/refresh-token-auth",

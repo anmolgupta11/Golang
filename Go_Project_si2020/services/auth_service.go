@@ -7,9 +7,6 @@ import (
 	"Go_Project_si2020/api/parameters"
 	"Go_Project_si2020/core/authentication"
 	"Go_Project_si2020/services/models"
-
-	jwt "github.com/dgrijalva/jwt-go"
-	request "github.com/dgrijalva/jwt-go/request"
 )
 
 func Login(requestUser *models.User) (int, []byte) {
@@ -41,14 +38,14 @@ func RefreshToken(requestUser *models.User) []byte {
 	return response
 }
 
-func Logout(req *http.Request) error {
-	authBackend := authentication.InitJWTAuthenticationBackend()
-	tokenRequest, err := request.ParseFromRequest(req, request.OAuth2Extractor, func(token *jwt.Token) (interface{}, error) {
-		return authBackend.PublicKey, nil
-	})
-	if err != nil {
-		return err
-	}
-	tokenString := req.Header.Get("Authorization")
-	return authBackend.Logout(tokenString, tokenRequest)
-}
+// func Logout(req *http.Request) error {
+// 	authBackend := authentication.InitJWTAuthenticationBackend()
+// 	tokenRequest, err := request.ParseFromRequest(req, request.OAuth2Extractor, func(token *jwt.Token) (interface{}, error) {
+// 		return authBackend.PublicKey, nil
+// 	})
+// 	if err != nil {
+// 		return err
+// 	}
+// 	tokenString := req.Header.Get("Authorization")
+// 	return authBackend.Logout(tokenString, tokenRequest)
+// }
