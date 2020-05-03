@@ -13,7 +13,7 @@ var (
 func ConnectCache() {
 
 	Cache = redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     "localhost:8081",
 		Password: "",
 		DB:       0,
 	})
