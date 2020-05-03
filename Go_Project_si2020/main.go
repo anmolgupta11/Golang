@@ -1,27 +1,30 @@
 package main
 
 import (
-	"log"
 	"net/http"
 
 	"Go_Project_si2020/config"
 	"Go_Project_si2020/routers"
+	"Go_Project_si2020/settings"
+
+	"github.com/codegangsta/negroni"
 )
 
 func main() {
+
+	settings.Init()
 	router := routers.RouterMux()
 
+	config.ConnectDatabase()
 	config.ConnectCache()
 
 	defer config.Cache.Close()
 
 	config.PingCache()
 
-	err := http.ListenAndServe(":8081", router)
+	n := negroni.Classic()
+	n.UseHandler(router)
 
-	if err != nil {
-		log.Fatal(err)
-
-	}
+	http.ListenAndServe(":8081", n)
 
 }
